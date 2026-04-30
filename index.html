@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juanpa Hogar & Jardín - Business Strategy</title>
+<link rel="stylesheet" href="global.css">
+<style>
+/* --- Color Palette --- */
+:root {
+  --bg: #0e0c09;
+  --bg2: #1a1612;
+  --bg3: #26211c;
+  --text: #f0ebe2;
+  --sec: #b8a990;
+  --acc: #4d9b6f; /* Juanpa Green */
+  --t1: #c4622a; /* Terra 1 */
+  --t2: #9b4d2a; /* Terra 2 */
+  --g1: #4d9b6f;
+  --g2: #2d6a4f;
+  --g3: #1b4332;
+  --gold: #d4a849;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* --- Hero Section --- */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: radial-gradient(circle at center, #1a1612 0%, #0e0c09 100%);
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--acc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-desc {
+  max-width: 600px;
+  color: var(--sec);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-pill {
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.pill-g { background: rgba(77,155,111,0.1); color: var(--acc); border-color: rgba(77,155,111,0.3); }
+.pill-t { background: rgba(196,98,42,0.1); color: var(--t1); border-color: rgba(196,98,42,0.3); }
+.pill-a { background: rgba(212,168,73,0.1); color: var(--gold); border-color: rgba(212,168,73,0.3); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sec);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--acc), transparent);
+}
+
+/* --- Content Sections --- */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--text);
+}
+
+.section-title em { font-style: italic; font-weight: 400; color: var(--sec); }
+
+/* --- Doc Cards --- */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.doc-card {
+  background: var(--bg2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-card:hover {
+  background: var(--bg3);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.doc-card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.acc-green { background: linear-gradient(to right, var(--g1), var(--g2)); }
+.acc-terra { background: linear-gradient(to right, var(--t1), var(--t2)); }
+
+.doc-card-icon {
+  font-size: 2rem;
+  color: var(--acc);
+}
+
+.doc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.doc-card-arrow {
+  color: var(--sec);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.doc-card:hover .doc-card-arrow {
+  transform: translateX(5px);
+  color: var(--text);
+}
+
+.doc-card-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sec);
+}
+
+.doc-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.doc-card-desc {
+  color: var(--sec);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.doc-card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.doc-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+}
+
+.doc-card-open {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--acc);
+}
+
+/* --- Featured Doc --- */
+.doc-card-featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #1a1612 0%, #26211c 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: block;
+  text-decoration: none;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.featured-inner {
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .featured-inner { grid-template-columns: 1fr; padding: 2.5rem; }
+  .featured-side { display: none; }
+}
+
+.featured-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--acc);
+  margin-bottom: 1rem;
+}
+
+.featured-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.featured-desc {
+  color: var(--sec);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.featured-chips {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.f-chip {
+  font-size: 0.7rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px;
+  color: var(--sec);
+}
+
+.featured-side {
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  padding-left: 4rem;
+}
+
+.featured-side-icon {
+  font-size: 4rem;
+  color: var(--acc);
+  margin-bottom: 1rem;
+}
+
+.featured-side-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--sec);
+  text-transform: uppercase;
+}
+
+/* --- Divider --- */
+.divider { padding: 0 2rem; max-width: 1200px; margin: 0 auto; }
+.divider-line { height: 1px; background: rgba(255,255,255,0.05); }
+
+/* --- Metas --- */
+.metas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.meta-card {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.mc-cp .meta-label { color: var(--acc); }
+.mc-mp .meta-label { color: var(--gold); }
+.mc-lp .meta-label { color: var(--t1); }
+
+.meta-list {
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--sec);
+}
+
+.meta-list li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.meta-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.2);
+}
+
+/* --- Footer --- */
+.site-footer {
+  background: #090807;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* --- Reveal Animation --- */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html" class="nav-brand">
+    <i data-lucide="leaf" class="brand-icon"></i>
+    Juanpa
+  </a>
+    <div class="nav-links">
+    <a href="index.html" class="nav-link active"><i data-lucide="home"></i> <span>Inicio</span></a>
+    <a href="resumenproyecto.html" class="nav-link"><i data-lucide="map"></i> <span>Resumen</span></a>
+    <a href="modelo-canva.html" class="nav-link"><i data-lucide="layout-dashboard"></i> <span>Canva</span></a>
+    <a href="Experienciadelcliente.html" class="nav-link"><i data-lucide="target"></i> <span>Journey Map</span></a>
+    <a href="equipo.html" class="nav-link"><i data-lucide="users"></i> <span>Equipo</span></a>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-eyebrow">Documentación Oficial</div>
+  <h1 class="hero-title">Juanpa Hogar <em>& Jardín</em></h1>
+  <p class="hero-desc">
+    Creamos materas de cerámica horneadas a mano con técnica artesanal 100% colombiana. Cada pieza es única, diseñada cuidadosamente para los amantes de bonsáis, suculentas y cactus que buscan una alternativa auténtica, elegante y con historia frente a los productos industriales genéricos.
+  </p>
+
+  <div class="hero-pills">
+    <a href="https://www.mercadolibre.com.co/pagina/juanpahogaryjardin" target="_blank" class="hero-pill pill-g" style="text-decoration: none;">✓ MercadoLibre activo</a>
+    <span class="hero-pill pill-t"><i data-lucide="zap" style="width: 12px; height: 12px; margin-right: 4px;"></i> Actualización en curso</span>
+    <span class="hero-pill pill-a">◷ juanpaweb.com por construir</span>
+    <span class="hero-pill pill-t">◷ Falabella por activar</span>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Explorar documentos
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ── DOCUMENTO DESTACADO: RESUMEN ──────────────────────────────── -->
+<div class="section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Documento principal</div>
+    <h2 class="section-title">Resumen <em>estratégico</em></h2>
+  </div>
+
+  <a class="doc-card-featured reveal smooth-hover" href="resumenproyecto.html" target="_blank">
+    <div style="height:3px;background:linear-gradient(to right,var(--g3),var(--g1),var(--t1));"></div>
+    <div class="featured-inner">
+      <div class="featured-body">
+        <div class="featured-eyebrow">Resumen general · Visión completa</div>
+        <div class="featured-title">Diagnóstico y plan estratégico completo del proyecto</div>
+        <div class="featured-desc">Propuesta de valor, canales de venta, segmentos de clientes, fuentes de ingreso, estructura de costos, automatizaciones con IA y metas por horizonte de tiempo. Todo en un solo documento visual.</div>
+        <div class="featured-chips">
+          <span class="f-chip">Propuesta de valor</span>
+          <span class="f-chip">6 canales de venta</span>
+          <span class="f-chip">5 segmentos</span>
+          <span class="f-chip">5 fuentes de ingreso</span>
+          <span class="f-chip">Metas 3 horizontes</span>
+          <span class="f-chip">Próximos 5 pasos</span>
+        </div>
+      </div>
+      <div class="featured-side">
+        <div class="featured-side-icon"><i data-lucide="map"></i></div>
+        <div class="featured-side-label">Abrir resumen completo</div>
+        <div class="doc-card-arrow">→</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ── MODELOS DE NEGOCIO ─────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Modelos de negocio</div>
+    <h2 class="section-title">Análisis <em>estratégico</em></h2>
+  </div>
+
+  <div class="docs-grid">
+
+    <!-- BMC -->
+    <a class="doc-card reveal" href="modelo-canva.html" target="_blank">
+      <div class="doc-card-accent acc-green"></div>
+      <div class="doc-card-body">
+        <div class="doc-card-top">
+          <div class="doc-card-icon"><i data-lucide="layout-dashboard"></i></div>
+          <div class="doc-card-arrow">→</div>
+        </div>
+        <div class="doc-card-type">Modelo de negocio</div>
+        <div class="doc-card-title">Lienzo de Modelo de Negocio</div>
+        <div class="doc-card-desc">Los 9 bloques del Business Model Canvas: socios clave, actividades, recursos, propuesta de valor, relaciones, canales, segmentos, costos e ingresos. Incluye metas por horizonte de tiempo.</div>
+      </div>
+      <div class="doc-card-footer">
+        <span class="doc-card-tag tag-g">Canvas</span>
+        <span class="doc-card-open">Ver documento <i data-lucide="arrow-up-right" style="width: 12px; height: 12px;"></i></span>
+      </div>
+    </a>
+
+    <!-- VPC / Customer Journey -->
+    <a class="doc-card reveal" href="Experienciadelcliente.html" target="_blank">
+      <div class="doc-card-accent acc-terra"></div>
+      <div class="doc-card-body">
+        <div class="doc-card-top">
+          <div class="doc-card-icon"><i data-lucide="target"></i></div>
+          <div class="doc-card-arrow" style="opacity:.3;transform:none;">—</div>
+        </div>
+        <div class="doc-card-type">viaje del cliente y Propuesta de valor</div>
+        <div class="doc-card-title">Lienzo Customer Journey y Propuesta de Valor</div>
+        <div class="doc-card-desc">viaje completo de un cliente, desde el primer instante en que descubre una matera hasta convertirse en comprador recurrente</div>
+      </div>
+      <div class="doc-card-footer">
+        <span class="doc-card-tag tag-t">Customer Journey</span>
+        <span class="doc-card-open">Ver documento <i data-lucide="arrow-up-right" style="width: 12px; height: 12px;"></i></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ── METAS ──────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Objetivos</div>
+    <h2 class="section-title">Metas por <em>horizonte</em></h2>
+  </div>
+  <div class="metas-grid reveal">
+    <div class="meta-card mc-cp">
+      <div class="meta-label"><i data-lucide="zap" style="width: 14px; height: 14px; margin-right: 4px;"></i> Corto plazo — 0 a 3 meses</div>
+      <ul class="meta-list">
+        <li>Finalizar actualización de listings en MercadoLibre</li>
+        <li>Activar Falabella con al menos 10 productos</li>
+        <li>Construir juanpaweb.com con WP + Elementor + WooCommerce</li>
+        <li>Implementar agente IA de atención al cliente</li>
+        <li>Publicar 3 piezas de contenido semanales en Instagram</li>
+        <li>Lograr 2 a 3 pedidos regulares por semana</li>
+      </ul>
+    </div>
+    <div class="meta-card mc-mp">
+      <div class="meta-label"><i data-lucide="trending-up" style="width: 14px; height: 14px; margin-right: 4px;"></i> Mediano plazo — 3 a 12 meses</div>
+      <ul class="meta-list">
+        <li>Activar Instagram Shopping y TikTok Shop</li>
+        <li>Iniciar pauta en Meta Ads y medir ROAS</li>
+        <li>Conseguir al menos 1 cliente B2B vivero o florería</li>
+        <li>Ampliar catálogo con artesanos aliados</li>
+        <li>Generar ingresos de la tienda propia</li>
+      </ul>
+    </div>
+    <div class="meta-card mc-lp">
+      <div class="meta-label"><i data-lucide="rocket" style="width: 14px; height: 14px; margin-right: 4px;"></i> Largo plazo — más de 12 meses</div>
+      <ul class="meta-list">
+        <li>Consolidar tienda propia como canal principal</li>
+        <li>Marca reconocida en cerámica artesanal para plantas</li>
+        <li>Explorar Etsy y Amazon Handmade</li>
+        <li>Operación semi-automatizada con Nexus 360</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-brand">Juanpa Hogar & Jardín</div>
+  <div class="footer-text">Documentos estratégicos v1.0 · Marzo 2026 · Nexus IA 360</div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+lucide.createIcons();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

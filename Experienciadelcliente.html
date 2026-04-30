@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiencia del Cliente - Juanpa Hogar y Jardín</title>
+<link rel="stylesheet" href="global.css">
+<style>
+/* --- Color Palette --- */
+:root {
+  --bg: #faf7f2; /* Crema muy suave */
+  --bg2: #ffffff;
+  --bg3: #f0ebe2;
+  --text: #1a1208;
+  --sec: #6b5e4a;
+  --acc: #4d9b6f; /* Juanpa Green */
+  --t1: #c4622a; /* Terra 1 */
+  --t2: #9b4d2a; /* Terra 2 */
+  --g1: #4d9b6f;
+  --g2: #2d6a4f;
+  --a1: #d4a849; /* Gold */
+  --border: #e2d9cc;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* --- Header --- */
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.header-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--t1);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.header-desc {
+  font-size: 1.2rem;
+  color: var(--sec);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- Section --- */
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sec);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  color: var(--text);
+}
+.section-title em { font-style: italic; font-weight: 400; color: var(--sec); }
+
+/* --- Journey Grid --- */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 1000px) {
+  .journey-grid { grid-template-columns: 1fr; }
+}
+
+.step-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--acc);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--t1);
+  background: rgba(196,98,42,0.08);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  align-self: flex-start;
+}
+
+.step-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--sec);
+  margin-bottom: 1rem;
+}
+
+.step-touchpoints {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.tp-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.tp-icons {
+  display: flex;
+  gap: 0.8rem;
+  color: var(--sec);
+}
+
+/* --- Emotion Curve --- */
+.emotion-section {
+  background: var(--bg3);
+  border-radius: 32px;
+  padding: 4rem;
+  margin: 6rem 0;
+}
+
+.emotion-track {
+  height: 150px;
+  border-bottom: 2px dashed var(--border);
+  position: relative;
+  margin: 4rem 0;
+}
+
+.emotion-labels {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: -20px;
+  left: 0; right: 0;
+}
+
+.emotion-point {
+  text-align: center;
+  width: 20%;
+}
+
+.emotion-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Goal Cards --- */
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) { .goals-grid { grid-template-columns: 1fr; } }
+
+.goal-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.goal-icon {
+  font-size: 2.5rem;
+  color: var(--acc);
+}
+
+.goal-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--t1);
+  margin-bottom: 0.5rem;
+}
+
+.goal-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.goal-card p {
+  font-size: 0.95rem;
+  color: var(--sec);
+}
+
+.divider { height: 1px; background: var(--border); margin: 6rem 0; }
+
+.footer {
+  text-align: center;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+  color: #999;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+</style>
+</head>
+<body class="light-mode">
+
+<nav class="global-nav">
+  <a href="index.html" class="nav-brand">
+    <i data-lucide="leaf" class="brand-icon"></i>
+    Juanpa
+  </a>
+    <div class="nav-links">
+    <a href="index.html" class="nav-link"><i data-lucide="home"></i> <span>Inicio</span></a>
+    <a href="resumenproyecto.html" class="nav-link"><i data-lucide="map"></i> <span>Resumen</span></a>
+    <a href="modelo-canva.html" class="nav-link"><i data-lucide="layout-dashboard"></i> <span>Canva</span></a>
+    <a href="Experienciadelcliente.html" class="nav-link active"><i data-lucide="target"></i> <span>Journey Map</span></a>
+    <a href="equipo.html" class="nav-link"><i data-lucide="users"></i> <span>Equipo</span></a>
+  </div>
+</nav>
+
+<div class="container">
+  
+  <header class="header">
+    <div class="header-eyebrow">Customer Centricity</div>
+    <h1 class="header-title">El Viaje de la <em>Matera Artesanal</em></h1>
+    <p class="header-desc">
+      Diseñamos cada punto de contacto para transformar una simple compra de decoración en una conexión duradera con el arte cerámico y la naturaleza.
+    </p>
+  </header>
+
+  <!-- JOURNEY STEPS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Etapas del viaje</div>
+      <h2 class="section-title">De la curiosidad a la <em>lealtad</em></h2>
+    </div>
+
+    <div class="journey-grid">
+      
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-num">01. Descubrimiento</div>
+        <div class="step-title">Inspiración en Redes</div>
+        <div class="step-desc">El cliente ve un video corto en TikTok o Instagram del proceso de torneado de una matera. Siente curiosidad por la técnica artesanal.</div>
+        <div class="step-touchpoints">
+          <div class="tp-label">Puntos de contacto</div>
+          <div class="tp-icons"><i data-lucide="instagram"></i> <i data-lucide="video"></i></div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-num">02. Consideración</div>
+        <div class="step-title">Evaluación de Valor</div>
+        <div class="step-desc">Entra a MercadoLibre o juanpaweb.com. Lee las reseñas sobre el empaque seguro y ve las fotos reales del acabado cerámico.</div>
+        <div class="step-touchpoints">
+          <div class="tp-label">Puntos de contacto</div>
+          <div class="tp-icons"><i data-lucide="shopping-bag"></i> <i data-lucide="globe"></i></div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-num">03. Conversión</div>
+        <div class="step-title">Compra sin fricción</div>
+        <div class="step-desc">Realiza el pago. Recibe un mensaje automático del Agente de Ventas (IA) agradeciendo y confirmando el tiempo de horneado o envío.</div>
+        <div class="step-touchpoints">
+          <div class="tp-label">Puntos de contacto</div>
+          <div class="tp-icons"><i data-lucide="credit-card"></i> <i data-lucide="message-square"></i></div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-num">04. Entrega</div>
+        <div class="step-title">Efecto Wow Unboxing</div>
+        <div class="step-desc">Recibe la caja. El empaque reforzado y una pequeña nota sobre el cuidado del bonsái superan sus expectativas. La pieza es más bella en mano.</div>
+        <div class="step-touchpoints">
+          <div class="tp-label">Puntos de contacto</div>
+          <div class="tp-icons"><i data-lucide="package"></i> <i data-lucide="gift"></i></div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-card">
+        <div class="step-num">05. Fidelización</div>
+        <div class="step-title">Comunidad & Recompra</div>
+        <div class="step-desc">Comparte una foto en su historia de IG. Recibe una invitación al curso de Juanpa Code o un descuento para su próxima pieza exclusiva.</div>
+        <div class="step-touchpoints">
+          <div class="tp-label">Puntos de contacto</div>
+          <div class="tp-icons"><i data-lucide="share-2"></i> <i data-lucide="award"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMOTION CURVE -->
+  <div class="emotion-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Mapa de empatía</div>
+      <h2 class="section-title">Curva de <em>emociones</em></h2>
+    </div>
+    
+    <div class="emotion-track">
+      <svg width="100%" height="80" style="position:absolute; top:0; left:0;">
+        <defs>
+          <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#C4714A;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#D4A849;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4D9B6F;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <!-- Curve line -->
+        <path d="M0 35 C100 35 150 60 200 55 C300 45 350 25 400 30 C500 38 550 15 600 10 C700 5 750 8 800 8" fill="none" stroke="url(#curveGrad)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Dots -->
+        <circle cx="0" cy="35" r="6" fill="#C4714A"/>
+        <circle cx="200" cy="55" r="6" fill="#D4A849"/>
+        <circle cx="400" cy="30" r="6" fill="#7A9E72"/>
+        <circle cx="800" cy="8" r="6" fill="#4A6741"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GOALS -->
+<div class="goals-section">
+  <div class="section-header"><h3>Metas Clave del Journey</h3></div>
+  <div class="goals-grid">
+    <div class="goal-card smooth-hover">
+      <div class="goal-icon"><i data-lucide="zap"></i></div>
+      <div class="goal-body">
+        <div class="goal-tag">Corto Plazo</div>
+        <h4>Tiempo cero en preguntas frecuentes</h4>
+        <p>El Agente de Ventas Consultivo absorbe el 100% de las consultas repetitivas sobre materiales, tamaños, drenaje y envíos, liberando a Juanpa para enfocarse en el producto y el crecimiento.</p>
+      </div>
+    </div>
+    <div class="goal-card smooth-hover">
+      <div class="goal-icon"><i data-lucide="leaf"></i></div>
+      <div class="goal-body">
+        <div class="goal-tag">Medio Plazo</div>
+        <h4>30% de clientes de MercadoLibre compran directo</h4>
+        <p>El seguimiento post-venta del Agente de Lealtad construye una relación directa con el cliente, migrándolo del marketplace a juanpaweb.com en la segunda compra, con mayor margen y datos propios.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="goals-section">
+  <div class="section-header">
+    <h3>Popuesta de valor - ¿Por qué <em>nos compran?</em></h3>
+  </div>
+  <div class="goals-grid">
+    <div class="goal-card smooth-hover">
+      <div class="goal-icon"><i data-lucide="user"></i></div>
+      <div class="goal-body">
+        <div class="goal-tag">PERFIL DEL CLIENTE</div>
+        <h4>¿Qué necesita el cliente?</h4>
+        <div style="background:rgba(196,98,42,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--t1);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--t1);margin-bottom:.3rem;">🎯 Trabajos del cliente</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">Encontrar un producto artesanal diferente · Decorar su hogar con algo original · Regalar algo memorable · Ampliar su colección de suculentas</div>
+        </div>
+        <br>
+        <div style="background:rgba(196,98,42,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--t2);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--t1);margin-bottom:.3rem;">😣 Dolores</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">"Todo lo que encuentro se ve igual" · "Las materas plásticas son feas" · "No sé dónde conseguir algo artesanal de calidad" · "No quiero pagar envío altísimo"</div>
+        </div>
+        <br>
+        <div style="background:rgba(196,98,42,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--a1);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--a1);margin-bottom:.3rem;">🌟 Ganancias esperadas</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">Tener un espacio estéticamente agradable · Sentir que apoya lo artesanal colombiano · Recibir algo rápido y bien empacado · Encontrar exactamente el tamaño que necesita</div>
+        </div>
+        
+        </div>
+    </div>
+    <div class="goal-card smooth-hover">
+      <div class="goal-icon"><i data-lucide="brush"></i></div>
+      <div class="goal-body">
+        <div class="goal-tag">MAPA DE VALOR ¿Qué ofrecemos?</div>
+        <h4>¿Qué ofrecemos?</h4>
+       <div style="background:rgba(77,155,111,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--g1);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--g1);margin-bottom:.3rem;">🔧 Productos y servicios</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">Materas de cerámica horneadas a mano · Tamaños pequeño a mediano · Diseños especiales para bonsái, cactus y suculentas · Packs y colecciones</div>
+        </div>
+        <br>
+        <div style="background:rgba(77,155,111,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--g2);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--g1);margin-bottom:.3rem;">💊 Aliviadores de dolor</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">Producto 100% artesanal y único · Disponible en marketplace con envío rápido · Fotos reales del producto terminado · Variedad de tamaños en un solo lugar</div>
+        </div>
+        <br>
+        <div style="background:rgba(77,155,111,.08);border-radius:8px;padding:.85rem;border-left:3px solid var(--a1);">
+          <div style="font-size:.90rem;font-weight:600;color:var(--a1);margin-bottom:.3rem;">✨ Creadores de alegría</div>
+          <div style="font-size:.85rem;color:var(--sec);line-height:1.5;">Sentir que apoya a un artesano local · Recibir un empaque cuidado · Producto que mejora con el tiempo · Historia detrás de cada matera</div>
+        </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMOTION CURVE -->
+<div class="emotion-section">
+  <div class="section-header"><h3>⚡ Encaje Dolor → Solución</h3></div>
+  <div class="emotion-track">
+    <div class="emotion-labels">
+      <div class="emotion-point">
+        <div style="display:flex;align-items:center;gap:.7rem;background:var(--bg3);border-radius:8px;padding:.75rem;">
+        <div style="font-size:.8rem;color:var(--t1);flex:1;line-height:1.4;">😣 "Todo se ve igual, quiero algo diferente"</div>
+        <div style="color:var(--g1);font-weight:700;">→</div>
+        <div style="font-size:.8rem;color:var(--g1);flex:1;line-height:1.4;text-align:right;">🏺 Cerámica artesanal única, horneada a mano</div>
+      </div>
+      </div>
+      <div class="emotion-point">
+        <div style="display:flex;align-items:center;gap:.7rem;background:var(--bg3);border-radius:8px;padding:.75rem;">
+        <div style="font-size:.8rem;color:var(--t1);flex:1;line-height:1.4;">😣 "No encuentro el tamaño exacto para mi bonsái"</div>
+        <div style="color:var(--g1);font-weight:700;">→</div>
+        <div style="font-size:.8rem;color:var(--g1);flex:1;line-height:1.4;text-align:right;">🌱 Catálogo especializado en bonsái y suculentas</div>
+      </div>
+      </div>
+      <div class="emotion-point">
+        <div style="display:flex;align-items:center;gap:.7rem;background:var(--bg3);border-radius:8px;padding:.75rem;">
+        <div style="font-size:.8rem;color:var(--t1);flex:1;line-height:1.4;">😣 "Las materas plásticas no combinan con mi deco"</div>
+        <div style="color:var(--g1);font-weight:700;">→</div>
+        <div style="font-size:.8rem;color:var(--g1);flex:1;line-height:1.4;text-align:right;">🎨 Cerámica con acabados artesanales únicos</div>
+      </div>
+      </div>
+      <div class="emotion-point">
+        <div style="display:flex;align-items:center;gap:.7rem;background:var(--bg3);border-radius:8px;padding:.75rem;">
+        <div style="font-size:.8rem;color:var(--t1);flex:1;line-height:1.4;">😣 "Quiero un regalo original pero no sé dónde"</div>
+        <div style="color:var(--g1);font-weight:700;">→</div>
+        <div style="font-size:.8rem;color:var(--g1);flex:1;line-height:1.4;text-align:right;">🎁 Disponible en ML con entrega rápida y empaque cuidado</div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-brand">Juanpa Hogar & Jardín</div>
+  <div class="footer-text">Documentos estratégicos v1.0 · Marzo 2026 · Nexus IA 360</div>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
